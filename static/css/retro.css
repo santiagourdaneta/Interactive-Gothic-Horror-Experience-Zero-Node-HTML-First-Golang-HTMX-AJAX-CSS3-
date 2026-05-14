@@ -1,0 +1,108 @@
+/* Reset básico para que todo se vea bien */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d0208; /* Negro verdoso profundo */
+    color: #00ff41;           /* Verde Matrix / Terminal */
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Efecto de Escaneo CRT */
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    z-index: 10;
+    background-size: 100% 3px, 3px 100%;
+    pointer-events: none;
+}
+
+.container {
+    max-width: 600px;
+    padding: 2rem;
+    border: 2px solid #ff003c; /* Rojo sangre neón */
+    box-shadow: 0 0 20px #ff003c, inset 0 0 10px #ff003c;
+    background: rgba(20, 0, 0, 0.8);
+    position: relative;
+    z-index: 5;
+}
+
+h1 {
+    color: #00ffff; /* Cian neón */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px #ff003c;
+    letter-spacing: 4px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* El Botón Estilo Arcade */
+.btn-retro {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    color: #ff003c;
+    border: 2px solid #ff003c;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.btn-retro:hover {
+    background: #ff003c;
+    color: white;
+    box-shadow: 0 0 30px #ff003c;
+    transform: scale(1.02);
+}
+
+.btn-retro:active {
+    transform: scale(0.98);
+}
+
+/* Animación de sacudida (Glitch) */
+.glitch-vibration {
+    animation: shake 0.2s ease-in-out infinite;
+}
+
+@keyframes shake {
+    0% { transform: translate(0,0); }
+    25% { transform: translate(2px, -2px); filter: hue-rotate(90deg); }
+    50% { transform: translate(-2px, 2px); }
+    75% { transform: translate(2px, 2px); filter: brightness(1.5); }
+    100% { transform: translate(0,0); }
+}
+
+/* Para que el texto aparezca como si se estuviera escribiendo solo */
+.typing {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid #00ffff;
+    animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
